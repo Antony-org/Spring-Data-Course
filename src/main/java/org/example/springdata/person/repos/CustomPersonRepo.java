@@ -4,6 +4,7 @@ import org.example.springdata.person.Person;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.Collection;
 import java.util.stream.Stream;
 
 public interface CustomPersonRepo {
@@ -11,5 +12,6 @@ public interface CustomPersonRepo {
 
     @Query("select p from Person p")
     Stream<Person> streamAllPaged(Pageable pageable);
+
 
 }

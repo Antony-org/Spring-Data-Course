@@ -19,9 +19,11 @@ public class DBDataInitializer implements CommandLineRunner {
         Person p1 = new Person("jane", "Doe", 30, "123 Main Street");
         Person p2 = new Person("John", "Doe", 30, "123 Main Street");
         Person p3 = new Person("Tony", "Stark", 30, "123 Main Street");
+        Person p4 = new Person("Tony", "Waleed", 30, "123 Main Street");
 
         personRepository.save(p1);
         personRepository.save(p2);
         personRepository.save(p3);
+        personRepository.save(p4);
     }
 }

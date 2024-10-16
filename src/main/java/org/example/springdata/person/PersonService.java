@@ -1,7 +1,11 @@
 package org.example.springdata.person;
 
 import org.example.springdata.person.projection.NamesOnly;
+import org.example.springdata.person.repos.PersonSpecs;
+import org.example.springdata.person.repos.Specifications;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -42,5 +46,18 @@ public class PersonService {
 
     public Collection<NamesOnly> getPersonsByLastName(String lastName) {
         return personRepository.findByLastName(lastName);
+    }
+
+    public Collection<Person> findAllPersons() {
+        return personRepository.findAll();
+    }
+
+    @Transactional(readOnly = true)
+    public List<Person> getPersonsByFirstname(String firstName) {
+        return personRepository.getPersonByFirstname(firstName);
+    }
+
+    public List<Person> getPersonsByAge(int age) {
+        return personRepository.getPersonByAge(age);
     }
 }

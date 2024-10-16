@@ -83,4 +83,14 @@ public class PersonController {
         }
         return ResponseEntity.ok(persons);
     }
+
+    @GetMapping("/by-firstname")
+    public List<Person> getPersonsByFirstname(@RequestParam("firstname") String firstName) {
+        return personService.getPersonsByFirstname(firstName);
+    }
+
+    @GetMapping("/age/{age}")
+    public List<Person> getPersonsByAge(@PathVariable int age) {
+        return personService.getPersonsByAge(age);
+    }
 }

@@ -1,11 +1,17 @@
 package org.example.springdata.person;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@NamedQuery(name = "Person.findByLastName", query = "select p from Person p where p.lastName = 'Stark'")
+@NamedStoredProcedureQuery(
+        name = "Person.getByFirstname",
+        procedureName = "get_person_by_firstname",
+        parameters = {
+                @StoredProcedureParameter(mode = ParameterMode.IN, name = "first_name", type = String.class)
+        },
+        resultClasses = Person.class
+)
 public class Person {
 
     @Id
