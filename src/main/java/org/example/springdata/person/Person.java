@@ -1,38 +1,32 @@
 package org.example.springdata.person;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
-@NamedQuery(name = "Person.findByLastName", query = "select p from Person p where p.lastName = 'Stark'")
-@NamedStoredProcedureQuery(
-        name = "Person.getByFirstname",
-        procedureName = "get_person_by_firstname",
-        parameters = {
-                @StoredProcedureParameter(mode = ParameterMode.IN, name = "first_name", type = String.class)
-        },
-        resultClasses = Person.class
-)
 public class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String firstName;
     private String lastName;
     private int age;
-    private String address;
 
-    // Constructors
-    public Person() {}
 
-    public Person(String firstName, String lastName, int age, String address) {
+    public Person() {
+    }
+
+    public Person(String firstName, String lastName, int age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
-        this.address = address;
     }
 
-    // Getters and Setters
+    // Getters and setters
     public Long getId() {
         return id;
     }
@@ -63,13 +57,5 @@ public class Person {
 
     public void setAge(int age) {
         this.age = age;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 }
