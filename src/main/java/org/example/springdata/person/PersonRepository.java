@@ -29,5 +29,5 @@ public interface PersonRepository extends JpaRepository<Person, Long>, CustomPer
     @Procedure(name = "Person.getByFirstname")
     List<Person> getPersonByFirstname(@Param("first_name") String firstName);
 
-    List<Person> getPersonByAge(int age);
+
 }

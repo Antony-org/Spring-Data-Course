@@ -2,10 +2,7 @@ package org.example.springdata.person;
 
 import org.example.springdata.person.projection.NamesOnly;
 import org.example.springdata.person.repos.PersonSpecs;
-import org.example.springdata.person.repos.Specifications;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -58,6 +55,6 @@ public class PersonService {
     }
 
     public List<Person> getPersonsByAge(int age) {
-        return personRepository.getPersonByAge(age);
+        return personRepository.findAll(PersonSpecs.PersonsByAge(age));
     }
 }
