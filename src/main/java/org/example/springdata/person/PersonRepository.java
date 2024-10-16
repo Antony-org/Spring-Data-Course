@@ -22,7 +22,7 @@ public interface PersonRepository extends JpaRepository<Person, Long>, CustomPer
 
     Collection<NamesOnly> findByLastName(@Param("lastname") String lastName);
 
-    @Query(value = "select p from #{#entityName} p where p.lastName = 'Stark'",
+    @Query(value = "select p from #{#entityName} p where p.lastName = 'Stark' and p.firstName = ?#{principal.firstName}",
     queryRewriter = MyQueryRewriter.class)
     List<Person> findAll();
 
